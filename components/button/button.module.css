@@ -1,0 +1,14 @@
+.button {
+  border: none;
+  background-color: var(--primary-100);
+  color: var(--bg-200);
+  height: 50px;
+  border-radius: 7px;
+  font-size: 17px;
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.button:hover {
+  opacity: 90%;
+  transform: translateY(-0.1em);
+}
