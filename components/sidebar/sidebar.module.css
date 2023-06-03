@@ -1,0 +1,40 @@
+.flex {
+  display: flex;
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  background-color: var(--bg-100);
+}
+
+.sidebar_item {
+  padding: 1em 0;
+  width: 90%;
+}
+
+.sidebar_item:hover {
+  color: var(--primary-100);
+  background-color: var(--gray-100);
+}
+
+.sidebar::after {
+  content: '';
+  border: 1px solid var(--gray-100);
+  position: absolute;
+  height: 100%;
+  left: 100%;
+}
+
+.sidebar img {
+  width: 25px;
+  height: auto;
+}
+
+.sidebar_item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
