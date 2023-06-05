@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import styles from './task.module.css';
 interface ITaskProps {
@@ -7,8 +8,10 @@ interface ITaskProps {
 const Task: React.FunctionComponent<ITaskProps> = ({ description }) => {
   return (
     <div className={`${styles.card_task} drag`}>
-      <p>{description}</p>
-      {}
+      <div>
+        <p>{description}</p>
+        {}
+      </div>
     </div>
   );
 };

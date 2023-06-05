@@ -48,3 +48,11 @@
   width: 90px;
   height: auto;
 }
+
+.login_registerLink {
+  color: var(--text-200);
+}
+
+.login_registerLink a {
+  color: var(--primary-200);
+}

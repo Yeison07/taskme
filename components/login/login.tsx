@@ -1,9 +1,11 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import * as React from 'react';
 import logo from '../../public/icons/logo.svg';
 import welcomeImg from '../../public/icons/welcome_login.svg';
 import Button from '../button/button';
 import Form from '../form/form';
+import Input from '../input/input';
 import styles from './login.module.css';
 interface ILoginProps {}
 
@@ -19,20 +21,13 @@ const Login: React.FC<ILoginProps> = (props) => {
       <div className={styles.login_form}>
         <Image src={logo} alt="Logotipe" />
         <Form title="Hola, bienvenido de nuevo">
-          <input
-            type="text"
-            name="input_email"
-            id=""
-            placeholder="Ingrese su correo"
-          />
-          <input
-            type="password"
-            name="input_password"
-            id=""
-            placeholder="Ingrese su contraseña"
-          />
+          <Input type="text" placeholder="Ingrese su correo" />
+          <Input type="password" placeholder="Ingrese contraseña" />
           <Button>Iniciar sesion</Button>
         </Form>
+        <p className={styles.login_registerLink}>
+          ¿Aún no tienes cuenta?, <Link href={'/'}>registrate aqui</Link>
+        </p>
       </div>
     </main>
   );

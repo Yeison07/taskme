@@ -1,14 +1,12 @@
-import Board from '@/components/board/board';
-import SideBar from '@/components/sidebar/sidebar';
+import Navbar from '@/components/navbar/navbar';
 import * as React from 'react';
-import styles from './tasks.module.css';
+import styles from './proyectos.module.css';
 interface IProyectosProps {}
 
 const Proyectos: React.FunctionComponent<IProyectosProps> = (props) => {
   return (
-    <div className={styles.tasks_container}>
-      <SideBar></SideBar>
-      <Board path="Projects / name / task board" />
+    <div className={styles.proyectos_container}>
+      <Navbar />
     </div>
   );
 };
