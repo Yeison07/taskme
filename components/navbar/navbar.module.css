@@ -12,18 +12,29 @@
   width: 99%;
 }
 
-.navbar a:first-child {
+.navbar_home {
   display: flex;
   align-items: center;
-  column-gap: 0.5em;
   margin-right: auto;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  column-gap: 0.5em;
+  color: var(--bg-300);
+  background-color: var(--primary-100);
+  font-weight: 500;
+  transition: transform 200ms ease-in-out;
+}
+
+.navbar_home:hover {
+  transform: translateX(5px);
+  background-color: var(--primary-10);
 }
 .navbar_item {
   font-size: 15px;
   padding: 5px 1em;
 }
 
-.navbar_item img {
+.navbar_home img {
   width: 35px;
   height: auto;
 }
