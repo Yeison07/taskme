@@ -10,8 +10,8 @@ const Navbar: React.FunctionComponent<INavbarProps> = (props) => {
     <header className={styles.navbar_contaniner}>
       <div className={styles.navbar}>
         <Link className={styles.navbar_home} href={'/'}>
-          Task Me
           <Image alt="Logo" src={logo} />
+          Inicio
         </Link>
         <Link className={styles.navbar_item} href={'/'}>
           Mi cuenta
