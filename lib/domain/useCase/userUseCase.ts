@@ -8,10 +8,14 @@ export class RegisterUseCase {
     this.authGateway = authGateway;
   }
 
-  public async registerUser(user: User): Promise<void> {
+  public async registerUser(user: User): Promise<boolean> {
     try {
       this.authGateway.register(user);
-    } catch (error) {}
+      return true;
+    } catch (error) {
+      alert(error);
+      return false;
+    }
   }
 }
 
