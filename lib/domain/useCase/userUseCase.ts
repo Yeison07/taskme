@@ -26,10 +26,12 @@ export class LoginUseCase {
     this.authGateway = authGateway;
   }
 
-  public async loginUser(user: User): Promise<void> {
+  public async loginUser(user: User): Promise<{ error?: any }> {
     try {
-      this.authGateway.login(user);
-    } catch (error) {}
+      return this.authGateway.login(user);
+    } catch (errorUseCase) {
+      return errorUseCase ? { ...errorUseCase } : {};
+    }
   }
 }
 

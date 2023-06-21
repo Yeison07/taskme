@@ -1,10 +1,11 @@
 'use client'; //MODIFICAR A USE SERVER CUANDO SEA ESTABLE
 import { AuthGateway } from '@/lib/domain/model/gateways/authGateway';
 import { User } from '@/lib/domain/model/user';
-import { RegisterUseCase } from '@/lib/domain/useCase/userUseCase';
+import { LoginUseCase } from '@/lib/domain/useCase/userUseCase';
 import FirebaseAuthRepository from '@/lib/infrastructure/driver_adapters/repositories/firebaseAuthRepository';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import * as React from 'react';
 import logo from '../../public/icons/logo.svg';
 import welcomeImg from '../../public/icons/welcome_login.svg';
@@ -16,13 +17,15 @@ import styles from './login.module.css';
 interface ILoginProps {}
 
 const authGateway: AuthGateway = new FirebaseAuthRepository();
-const register = new RegisterUseCase(authGateway);
+const login = new LoginUseCase(authGateway);
 
 const Login: React.FC<ILoginProps> = (props) => {
   const [user, setUser] = React.useState<User>({
     email: '',
     password: '',
   });
+
+  const router = useRouter();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,13 +35,17 @@ const Login: React.FC<ILoginProps> = (props) => {
     }));
   };
 
-  const registerUser = async (e: MouseEvent) => {
+  const loginUser = async (e: MouseEvent) => {
+    e.preventDefault();
     if (user.email.trim() === '' || user.password.trim() === '') {
       console.log(user);
       return;
     }
-    let registerSucces = await register.registerUser(user);
-    if (registerSucces) {
+    let loginSucces = await login.loginUser(user);
+    if (loginSucces.error) {
+      console.log(loginSucces);
+    } else if (Object.keys(loginSucces).length === 0) {
+      router.push('/home/projects');
     }
   };
   return (
@@ -64,10 +71,10 @@ const Login: React.FC<ILoginProps> = (props) => {
             placeholder="Ingrese contraseña"
             onChange={handleInputChange}
           />
-          <Button handleClick={registerUser}>Iniciar sesion</Button>
+          <Button handleClick={loginUser}>Iniciar sesion</Button>
         </Form>
         <p className={styles.login_registerLink}>
-          ¿Aún no tienes cuenta?, <Link href={'/'}>registrate aqui</Link>
+          ¿Aún no tienes cuenta?, <Link href={'/signup'}>registrate aqui</Link>
         </p>
       </div>
     </main>

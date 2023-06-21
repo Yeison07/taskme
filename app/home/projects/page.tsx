@@ -13,6 +13,7 @@ const Proyectos: React.FunctionComponent<IProyectosProps> = (props) => {
     title: 'El pepe',
     description: 'El pepe remix oficial',
   };
+
   return (
     <div className={styles.projects_container}>
       <Navbar />
@@ -24,7 +25,7 @@ const Proyectos: React.FunctionComponent<IProyectosProps> = (props) => {
             type="text"
           />
           <div className={styles.projects}>
-            <Link href={'/'}>
+            <Link href={'/home/projects/project'}>
               <Card card={card} />
             </Link>
             <Link href={'/'}>

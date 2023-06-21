@@ -8,10 +8,10 @@ interface IFormProps {
 
 const Form: React.FC<IFormProps> = ({ title, children }) => {
   return (
-    <div className={styles.form_container}>
+    <form className={styles.form_container}>
       <h1 className={styles.form_title}>{title}</h1>
-      <div className={styles.form_input}>{children}</div>
-    </div>
+      {children}
+    </form>
   );
 };
 

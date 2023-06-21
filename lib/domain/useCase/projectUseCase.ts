@@ -1,4 +1,9 @@
-import { User } from '../model/user';
+import { ProjectGateway } from '../model/gateways/projectGatewat';
 
-export const getProjectsByEmail = ({ email }: User) => {};
-export const getAllProjects = () => {};
+export class createProject {
+  private projectGateway: ProjectGateway;
+
+  constructor(projectGateway: ProjectGateway) {
+    this.projectGateway = projectGateway;
+  }
+}
