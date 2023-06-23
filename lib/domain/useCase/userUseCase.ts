@@ -45,6 +45,10 @@ export class LogoutUseCase {
   public async logOutUser(user: User): Promise<void> {
     try {
       this.authGateway.logout();
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+
+      throw error;
+    }
   }
 }

@@ -9,13 +9,15 @@ export default class ProjectRepository implements ProjectGateway {
   constructor() {}
 
   async getTaskByProject(project: Project): Promise<{ error?: any }> {
-    await this.axios.post(`/api/v1/users/getProjectByUserId`, {
-      project,
-    });
     try {
+      await this.axios.post(`/api/v1/users/getProjectByUserId`, {
+        project,
+      });
       return {};
     } catch (error) {
-      return { error };
+      console.log(error);
+
+      throw error;
     }
   }
 
@@ -30,6 +32,8 @@ export default class ProjectRepository implements ProjectGateway {
 
       return data;
     } catch (error) {
+      console.log(error);
+
       throw error;
     }
   }

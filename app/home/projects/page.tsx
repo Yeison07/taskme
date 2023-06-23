@@ -27,7 +27,7 @@ const Proyectos: React.FunctionComponent<IProyectosProps> = (props) => {
     queryKey: ['projectsId', user.email],
     queryFn: () => projectsByUser.getProjectByUser(user),
   });
-  const ids: number[] = data;
+  //const ids: number[] = data;
   if (isLoading) {
     console.log('cargando papa');
   }
@@ -35,8 +35,8 @@ const Proyectos: React.FunctionComponent<IProyectosProps> = (props) => {
   const listProjects = () => {
     return cards.map((el) => {
       return (
-        <Link href={'/home/projects/project'}>
-          <Card card={el} />
+        <Link key={el.title} href={'/home/projects/project'}>
+          <Card key={el.title} card={el} />
         </Link>
       );
     });
