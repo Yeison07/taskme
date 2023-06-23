@@ -16,9 +16,6 @@ import styles from './login.module.css';
 
 interface ILoginProps {}
 
-const authGateway: AuthGateway = new FirebaseAuthRepository();
-const login = new LoginUseCase(authGateway);
-
 const Login: React.FC<ILoginProps> = (props) => {
   const [user, setUser] = React.useState<User>({
     email: '',
@@ -34,6 +31,8 @@ const Login: React.FC<ILoginProps> = (props) => {
       [name]: value,
     }));
   };
+  const authGateway: AuthGateway = new FirebaseAuthRepository();
+  const login = new LoginUseCase(authGateway);
 
   const loginUser = async (e: MouseEvent) => {
     e.preventDefault();

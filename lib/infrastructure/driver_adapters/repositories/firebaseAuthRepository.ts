@@ -2,22 +2,21 @@ import { app } from '@/lib/config/fireBaseConfig';
 import { AuthGateway } from '@/lib/domain/model/gateways/authGateway';
 import { User } from '@/lib/domain/model/user';
 import {
-  Auth,
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 
 export default class FirebaseAuthRepository implements AuthGateway {
-  private _auth;
+  private auth;
 
   constructor() {
-    this._auth = getAuth(app);
+    this.auth = getAuth(app);
   }
   async register(user: User): Promise<boolean> {
     try {
       await createUserWithEmailAndPassword(
-        this._auth,
+        this.auth,
         user.email,
         user.password
       );
@@ -28,7 +27,7 @@ export default class FirebaseAuthRepository implements AuthGateway {
   }
   async login(user: User): Promise<{ error?: any }> {
     try {
-      await signInWithEmailAndPassword(this._auth, user.email, user.password);
+      await signInWithEmailAndPassword(this.auth, user.email, user.password);
       return {};
     } catch (error) {
       return {
@@ -41,9 +40,5 @@ export default class FirebaseAuthRepository implements AuthGateway {
   }
   recoverPassword(user: User): Promise<void> {
     throw new Error('Method not implemented.');
-  }
-
-  public get auth(): Auth {
-    return this._auth;
   }
 }

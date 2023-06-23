@@ -2,6 +2,7 @@ import '@fontsource/roboto';
 import '@fontsource/roboto/500.css';
 import 'normalize.css';
 import '../styles/globals.css';
+import { ReactQueryProvider } from './reactQueryProvider';
 
 export const metadata = {
   title: 'TaskMe!',
@@ -14,8 +15,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body>{children}</body>
-    </html>
+    <ReactQueryProvider>
+      <html lang="es">
+        <body>{children}</body>
+      </html>
+    </ReactQueryProvider>
   );
 }
